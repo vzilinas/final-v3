@@ -8,6 +8,8 @@
 	
 	<ItemGroup>
 	  <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.0" />
+	  <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0-preview.7.21377.19" />
 	</ItemGroup>
 	
 	<ItemGroup>
@@ -32,6 +34,10 @@
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>ValidationMessages.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Folder Include="Queries\" />
 	</ItemGroup>
 	
 </Project>
