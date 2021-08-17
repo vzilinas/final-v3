@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -8,10 +8,22 @@
 
 	<ItemGroup>
 		<Folder Include="Common\Filters\" />
+		<Folder Include="Controllers\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Application\Application.csproj" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0-preview.7.21378.4">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.5" />
+	  <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.1.5" />
+	  <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.1.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Application\Application.csproj" />
+		<ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,13 +1,32 @@
 ﻿using Whofax.Api.Common.Filters;
 using Whofax.Application;
+using Whofax.Api.Configuration;
+using Whofax.Infrastructure;
 
 namespace Whofax.Api;
 
 public class Startup
 {
+    public IWebHostEnvironment Environment { get; }
+
+    public IConfiguration Configuration { get; }
+
+    public Startup(IConfiguration configuration, IWebHostEnvironment environment)
+    {
+        Environment = environment;
+        Configuration = configuration;
+    }
+
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddApplication();
+        services.AddInfrastructure(Configuration);
+
+        services.AddIdentity();
+        services.AddAuthentication(Configuration);
+        //services.AddAuthorizationWithDefaultPolicy();
+
+        services.AddSwaggerDocumentation();
 
         services.AddRouting(options => options.LowercaseUrls = true);
         services.AddControllers(options =>
@@ -18,14 +37,21 @@ public class Startup
         services.AddHealthChecks();
     }
 
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void Configure(IApplicationBuilder app)
     {
-        if (env.IsDevelopment())
+        if (Environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
         }
 
+        app.UseHttpsRedirection();
+
+        app.UseSwaggerDocumentation();
+
         app.UseRouting();
+
+        app.UseAuthorization();
+        app.UseAuthentication();
 
         app.UseEndpoints(endpoints =>
         {

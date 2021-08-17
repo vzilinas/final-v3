@@ -20,13 +20,13 @@ public class TestCommandValidator : AbstractValidator<TestCommand>
         RuleFor(x => x.TestField)
             .Cascade(CascadeMode.Stop)
             .NotEmpty().WithMessage("Value cannot be empty")
-            .MustAsync(ContainsSomeString).WithMessage("Must contain 'test'")
+            .Must(ContainsSomeString).WithMessage("Must contain 'test'")
             .Length(6).WithMessage("Max length exceeded"); ;
     }
 
-    private Task<bool> ContainsSomeString(string testField, CancellationToken cancellationToken)
+    private bool ContainsSomeString(string testField)
     {
-        return new Task<bool>(() => testField.Contains("test"));
+        return testField.Contains("test");
     }
 }
 
@@ -34,6 +34,6 @@ public class TestCommandHandler : IRequestHandler<TestCommand>
 {
     public async Task<Unit> Handle(TestCommand request, CancellationToken cancellationToken)
     {
-        return await new Task<Unit>(() => new Unit());
+        return await Task.FromResult(new Unit());
     }
 }

@@ -1,8 +1,6 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using Whofax.Api;
+using Whofax.Infrastructure;
 
 public class Program
 {
@@ -10,6 +8,7 @@ public class Program
     {
         CreateHostBuilder(args)
             .Build()
+            .MigrateDatabase()
             .Run();
     }
 
@@ -21,7 +20,7 @@ public class Program
                 {
                     o.SingleLine = true;
                     o.IncludeScopes = false;
-                    o.TimestampFormat = "hh:mm:ss";
+                    o.TimestampFormat = "hh:mm:ss ";
                     o.ColorBehavior = LoggerColorBehavior.Enabled;
                 });
             })

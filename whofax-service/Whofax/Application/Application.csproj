@@ -1,39 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	
+
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<RootNamespace>Whofax.Application</RootNamespace>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
 	  <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.0" />
 	  <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
 	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0-preview.7.21377.19" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
-	  <Compile Update="Resources\ErrorMessages.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>ErrorMessages.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\ValidationMessages.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>ValidationMessages.resx</DependentUpon>
-	  </Compile>
+		<Compile Update="Resources\ErrorMessages.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>ErrorMessages.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\ValidationMessages.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>ValidationMessages.resx</DependentUpon>
+		</Compile>
 	</ItemGroup>
-	
+
 	<ItemGroup>
-	  <EmbeddedResource Update="Resources\ErrorMessages.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>ErrorMessages.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\ValidationMessages.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>ValidationMessages.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
+		<EmbeddedResource Update="Resources\ErrorMessages.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>ErrorMessages.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\ValidationMessages.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>ValidationMessages.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 	</ItemGroup>
 	
 	<ItemGroup>
