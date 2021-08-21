@@ -2,6 +2,7 @@
 using Whofax.Application;
 using Whofax.Api.Configuration;
 using Whofax.Infrastructure;
+using Whofax.Api.Resources;
 
 namespace Whofax.Api;
 
@@ -24,7 +25,7 @@ public class Startup
 
         services.AddIdentity();
         services.AddAuthentication(Configuration);
-        //services.AddAuthorizationWithDefaultPolicy();
+        services.AddAuthorizationWithDefaultPolicy();
 
         services.AddSwaggerDocumentation();
 
@@ -32,6 +33,9 @@ public class Startup
         services.AddControllers(options =>
         {
             options.Filters.Add(new ApiExceptionFilterAttribute());
+        }).AddDataAnnotationsLocalization(options => 
+        {
+            options.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(DataAnnotationMessages));
         });
 
         services.AddHealthChecks();
