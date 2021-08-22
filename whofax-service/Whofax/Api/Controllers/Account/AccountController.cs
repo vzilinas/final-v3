@@ -106,7 +106,7 @@ public class AccountController : ApiController
     /// <param name="model">Change password model</param>
     /// <returns></returns>
     [Authorize]
-    [HttpPost("change-password")]
+    [HttpPost("changepassword")]
     public async Task<IActionResult> ChangePassword(ChangePasswordModel model)
     {
         var user = await _userManager.GetUserAsync(User);
